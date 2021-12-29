@@ -1,0 +1,1 @@
+metadata=res://*/Models.OrderModel.csdl|res://*/Models.OrderModel.ssdl|res://*/Models.OrderModel.msl;provider=System.Data.SqlClient;provider connection string="data source=Kawai;initial catalog=CafeManagement;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"
