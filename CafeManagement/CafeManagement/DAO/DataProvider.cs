@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,21 @@ namespace CafeManagement.DAO
 
         private DataProvider() {}
 
-        string connString = "Data Source=Kawai;Initial Catalog=CafeManagement;Integrated Security=True";
+        private static string getConnectionString()
+        {
+            string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string connectionStringPath = Directory.GetParent(sCurrentDirectory).ToString();
+            for (int i = 0; i < 4; i++)
+            {
+                connectionStringPath = Directory.GetParent(connectionStringPath).ToString();
+            }
+            connectionStringPath = connectionStringPath + "\\ConnectionString.txt";
+            string[] connectionString = System.IO.File.ReadAllLines(connectionStringPath);
+
+            return connectionString[0].ToString();
+        }
+        string connString = getConnectionString();
+        //string connString = "Data Source=Kawai;Initial Catalog=CafeManagement;Integrated Security=True";
 
         public DataTable ExecuteQuery(string query,object[] para = null)
         {

@@ -121,7 +121,7 @@ namespace CafeManagement
             int quantityInStorage = tempItem.Quantity;
             if(quantityInStorage == 0)
             {
-                MessageBox.Show(itemName + "is sold out !");
+                MessageBox.Show(itemName + " is sold out !");
                 return;
             }
             else if(orderQuantity > quantityInStorage)
